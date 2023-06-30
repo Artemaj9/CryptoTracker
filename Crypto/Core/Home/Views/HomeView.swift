@@ -39,7 +39,6 @@ extension HomeView {
     private var homeHeader: some View {
         HStack{
             CircleButtonView(iconName: showPortfolio ? "plus" : "info")
-                .animation(.none)
                 .background(
                     CircleButtonAnimationView(animate: $showPortfolio))
             Spacer()
@@ -47,15 +46,13 @@ extension HomeView {
                 .font(.headline)
                 .fontWeight(.heavy)
                 .foregroundColor(Color.theme.accent)
-                .animation(.none)
             Spacer()
             CircleButtonView(iconName: "chevron.right")
                 .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
+                .animation(.spring(), value: showPortfolio)
                 .onTapGesture {
-                    withAnimation(.spring()) {
                         showPortfolio.toggle()
                     }
-                }
         }
         .padding(.horizontal)
     }
