@@ -22,6 +22,7 @@ struct HomeView: View {
             // content layer
             VStack {
                 homeHeader
+                HomeStatsView(showPortfolio: $showPortfolio)
                 
                 SearchBarView(searchText: $vm.searchText)
                 columnTitles
@@ -29,14 +30,14 @@ struct HomeView: View {
                 
                 if !showPortfolio {
                     allCoinsList
-                    //.transition(.move(edge: .leading))
-                   // .animation(.easeIn)
+                    .transition(.move(edge: .leading))
+                  
                     
                 }
                 if showPortfolio {
                     portfolioCoinsList
-                      //  .transition(.move(edge: .trailing))
-                      //  .animation(.easeIn)
+                       .transition(.move(edge: .trailing))
+                       
                 }
                
                 Spacer(minLength: 0)
